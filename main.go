@@ -16,6 +16,7 @@ func init(){
 func main(){
 	r := gin.Default()
 	r.POST("/news", controllers.NewsCreate)
+	r.GET("/news", controllers.NewsIndex)
 	PORT := os.Getenv("PORT")
 	r.Run("localhost:"+PORT)
 }
