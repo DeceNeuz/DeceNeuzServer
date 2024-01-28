@@ -28,3 +28,11 @@ func NewsCreate(c *gin.Context) {
 	})
 }
 
+func NewsIndex(c *gin.Context) {
+	var news []models.NewsPost
+	initializers.DB.Find(&news)
+
+	c.JSON(200, gin.H{
+		"news": news,
+	})
+}
