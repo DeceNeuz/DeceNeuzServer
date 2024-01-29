@@ -12,4 +12,5 @@ func init(){
 
 func main(){
 	initializers.DB.AutoMigrate(&models.NewsPost{})
+	initializers.DB.AutoMigrate(&models.UserDetails{})
 }
