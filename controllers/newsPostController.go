@@ -11,12 +11,13 @@ func NewsCreate(c *gin.Context) {
 	var body struct {
 		Title     string    
 		Content   string    
+		ShortDescription string
 		User     string    
 		Likes     uint      
 	}
 	c.Bind(&body)
 	//Create a post
-	post := models.NewsPost{Title: body.Title, Content:body.Content, User:body.User, Likes:0}
+	post := models.NewsPost{Title: body.Title, Content:body.Content,ShortDescription: body.ShortDescription ,User:body.User, Likes:0}
 	result := initializers.DB.Create(&post)
 	if result.Error != nil {
 		c.Status(400)
