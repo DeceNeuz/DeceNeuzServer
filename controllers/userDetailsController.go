@@ -26,3 +26,25 @@ func UserCreate(c *gin.Context) {
 		"user": user,
 	})
 }
+
+func LoginHandler(c *gin.Context) {
+	var body struct {
+		Email     string
+		Password   string
+	}
+	c.Bind(&body)
+
+	var user models.UserDetails
+	result := initializers.DB.Where("email = ?", body.Email).First(&user)
+
+	if result.Error != nil {
+		c.JSON(400, gin.H{"error": "Email not found"})
+		return
+	}
+
+	if body.Password == user.Password {
+		c.JSON(200, gin.H{"message": "Successful login"})
+	} else {
+		c.JSON(401, gin.H{"error": "Incorrect password"})
+	}
+}
