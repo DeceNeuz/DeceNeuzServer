@@ -37,3 +37,32 @@ func NewsIndex(c *gin.Context) {
 		"news": news,
 	})
 }
+
+func LikesUpdate(c *gin.Context) {
+	//Get data off req body'
+	var body struct {
+		IsLike 	bool
+	}
+	c.Bind(&body)
+	var record models.NewsPost
+    result := initializers.DB.First(&record, c.Param("id"))
+	if result.Error != nil {
+		c.JSON(400, "Post not found")
+		return
+	}
+	// increment like
+	if body.IsLike {
+		record.Likes++
+	} else { // decrement like
+		record.Likes--
+	}
+	result = initializers.DB.Save(&record)
+    
+    if result.Error != nil {
+        c.JSON(400, "Could not update DB")
+    }
+
+    c.JSON(200, gin.H{
+		"post": record,
+	})
+}
