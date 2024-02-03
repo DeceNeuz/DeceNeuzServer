@@ -20,6 +20,6 @@ func main(){
 	r.POST("/user", controllers.UserCreate)
 	r.POST("/login", controllers.LoginHandler)
 	r.PATCH("/likes/:id", controllers.LikesUpdate)
-	PORT := os.Getenv("PORT")
+	PORT := 3000
 	r.Run("localhost:"+PORT)
 }
