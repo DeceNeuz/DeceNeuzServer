@@ -18,6 +18,7 @@ func main(){
 	r.POST("/news", controllers.NewsCreate)
 	r.GET("/news", controllers.NewsIndex)
 	r.POST("/user", controllers.UserCreate)
+	r.POST("/login", controllers.LoginHandler)
 	r.PATCH("/likes/:id", controllers.LikesUpdate)
 	PORT := os.Getenv("PORT")
 	r.Run("localhost:"+PORT)
