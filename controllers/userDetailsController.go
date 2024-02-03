@@ -9,9 +9,9 @@ import (
 func UserCreate(c *gin.Context) {
 	//Get data off req body'
 	var body struct {
-		Email     string
-		Password   string
-		UserName     string
+		Email    string
+		Password string
+		UserName string
 	}
 	c.Bind(&body)
 	//Create an user
@@ -29,8 +29,8 @@ func UserCreate(c *gin.Context) {
 
 func LoginHandler(c *gin.Context) {
 	var body struct {
-		Email     string
-		Password   string
+		Email    string
+		Password string
 	}
 	c.Bind(&body)
 
@@ -43,7 +43,7 @@ func LoginHandler(c *gin.Context) {
 	}
 
 	if body.Password == user.Password {
-		c.JSON(200, gin.H{"message": "Successful login"})
+		c.JSON(200, gin.H{"message": "Successful login", "user": user})
 	} else {
 		c.JSON(401, gin.H{"error": "Incorrect password"})
 	}
