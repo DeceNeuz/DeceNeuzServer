@@ -13,6 +13,7 @@ func init(){
 }
 
 func main(){
+	gin.SetMode(gin.ReleaseMode)
 	r := gin.Default()
 	r.POST("/news", controllers.NewsCreate)
 	r.GET("/news", controllers.NewsIndex)
