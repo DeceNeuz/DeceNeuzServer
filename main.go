@@ -1,8 +1,6 @@
 package main
 
 import (
-	"os"
-
 	"github.com/SubhranilRaha/go-crud/controllers"
 	"github.com/SubhranilRaha/go-crud/initializers"
 	"github.com/gin-gonic/gin"
@@ -20,6 +18,6 @@ func main(){
 	r.POST("/user", controllers.UserCreate)
 	r.POST("/login", controllers.LoginHandler)
 	r.PATCH("/likes/:id", controllers.LikesUpdate)
-	PORT := 3000
-	r.Run("localhost:"+PORT)
+	// PORT := 3000
+	r.Run("localhost:3000")
 }
