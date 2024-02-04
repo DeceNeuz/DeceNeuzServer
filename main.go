@@ -19,6 +19,7 @@ func main() {
 	r.Use(cors.Default())
 	r.POST("/news", controllers.NewsCreate)
 	r.GET("/news", controllers.NewsIndex)
+	r.GET("/latest_news", controllers.LatestNewsIndex)
 	r.POST("/user", controllers.UserCreate)
 	r.POST("/login", controllers.LoginHandler)
 	r.PATCH("/likes/:id", controllers.LikesUpdate)
